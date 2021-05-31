@@ -1,23 +1,39 @@
-export default (app) => {
-  const cars = [{ make: "Ford", model: "Mustang" }];
-  app.get("/Cars", (req, res) => {
-    res.json(cars);
-  });
-  app.post("/Cars", (req, res) => {
-    const { params, body } = req;
-    const { make, model } = body;
-    const id = cars.reduce((maxId, cars) => Math.max(maxId, cars.id), 0);
-    const newCar = { id: id + 1, make, model };
-    cars.push(newCar);
-    res.json(newCar);
-  });
-  app.delete("/Cars/:id", (req, res) => {
-    const { params } = req;
-    const n = cars.findIndex((car) => cars.id === parseInt(params.id));
+import { secure } from "../AuthController.js";
+import { CarModel } from "./CarsRepository.js";
 
-    if (n > -1) {
-      car.splice(n, 1);
+//const fruits = [{ id: 1, type: "apple", name: "Golden" }];
+
+export default (app) => {
+  app.get(
+    "/Cars",
+    /*secure("USER", "ADMIN"),*/ async (req, res) => {
+      const cars = await CarModel.find({});
+      res.send(cars);
     }
-    res.end();
-  });
+  );
+
+  app.post(
+    "/Cars",
+    /*secure("ADMIN"),*/ async (req, res) => {
+      const { body } = req;
+
+      try {
+        const newCar = new CarModel(body);
+        await newCar.save();
+
+        res.json(newCar);
+      } catch (err) {
+        res.status(400).send(err);
+      }
+    }
+  );
+
+  app.delete(
+    "/Cars/:id",
+    /*secure("ADMIN"),*/ async (req, res) => {
+      const { params } = req;
+      await CarModel.findByIdAndDelete(params.id);
+      res.end();
+    }
+  );
 };
