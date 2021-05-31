@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // Using ES6 imports
 import mongoose from "mongoose";
 
@@ -19,3 +20,9 @@ const Fruit = new Schema({
 console.log("Connection state: ", mongoose.connection.readyState);
 
 export const FruitModel = mongoose.model("Fruit", Fruit);
+=======
+import mongoose from "mongoose";
+import FrtuiSchema from "./FruitSchema.js";
+
+export const FruitModel = mongoose.model("Fruit", FrtuiSchema);
+>>>>>>> cd395e858829d26bdb426a21c6ca83c292d19fe4
