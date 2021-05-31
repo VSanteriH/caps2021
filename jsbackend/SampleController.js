@@ -19,11 +19,8 @@ export default (app) => {
       res.end();
     }, 10000);
   });
-<<<<<<< HEAD
-=======
 
   app.get("/html", (req, res) => {
     res.send("<html></html>");
   });
->>>>>>> 2acb37576a34cf35293d1502f836e55377bc90b0
 };

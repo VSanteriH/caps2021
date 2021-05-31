@@ -1,11 +1,5 @@
 import express from "express";
 import bodyParser from "body-parser";
-<<<<<<< HEAD
-const app = express();
-const port = 3000;
-
-app.use(bodyParser.json());
-=======
 import cookieParser from "cookie-parser";
 
 const app = express();
@@ -22,14 +16,7 @@ import FruitsController from "./fruits/FruitsController.js";
 AuhtController(app);
 SampleController(app);
 FruitsController(app);
->>>>>>> 2acb37576a34cf35293d1502f836e55377bc90b0
 
-import FruitsController from "./fruits/FruitsController.js";
-import CarsController from "./cars/CarsController.js";
-import SampleController from "./SampleController.js";
-FruitsController(app);
-SampleController(app);
-CarsController(app);
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
 });
