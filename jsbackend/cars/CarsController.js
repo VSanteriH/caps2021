@@ -16,7 +16,7 @@ export default (app) => {
     "/Cars",
     /*secure("ADMIN"),*/ async (req, res) => {
       const { body } = req;
-
+      console.log(body);
       try {
         const newCar = new CarModel(body);
         await newCar.save();
