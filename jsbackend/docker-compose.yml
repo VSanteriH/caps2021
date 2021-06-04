@@ -40,8 +40,3 @@ services:
 
   redis:
     image: redis
-<<<<<<< HEAD
-    ports:
-      - 6379:6379
-=======
->>>>>>> 299e62f822fb2e28b563a0337902cb54ac21427a
