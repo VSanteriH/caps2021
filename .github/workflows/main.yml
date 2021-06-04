@@ -1,4 +1,4 @@
-name: jsbackend CI
+name: jsbackend ci
 
 on:
   pull_request:
